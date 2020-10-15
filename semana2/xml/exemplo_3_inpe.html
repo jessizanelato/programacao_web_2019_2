@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOMParser</title>
+</head>
+<body>
+
+    <div id="content"></div>
+    
+    <script>
+        function reqListener () {
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(this.responseText, "application/xml");
+            console.log(doc);
+        };
+        
+        var oReq = new XMLHttpRequest();        
+        oReq.onload = reqListener;        
+        oReq.open("get", "http://servicos.cptec.inpe.br/XML/cidade/228/previsao.xml", true);
+        oReq.send();
+    </script>
+</body>
+</html>

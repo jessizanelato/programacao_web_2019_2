@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Json</title>
+</head>
+<body>
+
+    <div id="content"></div>
+    
+    <script>
+        function reqListener () {
+            const json = this.responseText;
+            const obj = JSON.parse(json);
+            const books = obj.bookstore;
+            for(var i = 0; i < books.length; i++) {
+                console.log(books[i].book.title.value);
+                console.log(books[i].book.author);
+                console.log(books[i].book.year);
+                console.log(books[i].book.category);
+            }
+        };
+        
+        var oReq = new XMLHttpRequest();
+        oReq.onload = reqListener;        
+        oReq.open("get", "bookstore.json", true);        
+        oReq.send();
+    </script>
+</body>
+</html>

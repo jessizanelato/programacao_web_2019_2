@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOMParser</title>
+</head>
+<body>
+
+    <div id="content"></div>
+    
+    <script>
+        function reqListener () {
+            let parser = new DOMParser();
+            let doc = parser.parseFromString(this.responseText, "application/xml");
+            let books = doc.querySelector('bookstore').getElementsByTagName('book');
+            for(var i = 0; i < books.length; i++) {
+                console.log(books[i].getElementsByTagName('title')[0].innerHTML);
+                console.log(books[i].getElementsByTagName('author')[0].innerHTML);
+                console.log(books[i].getElementsByTagName('year')[0].innerHTML);
+                console.log(books[i].getAttribute('category'));
+            }
+        };
+        
+        var oReq = new XMLHttpRequest();        
+        oReq.onload = reqListener;        
+        oReq.open("get", "bookstore.xml", true);        
+        oReq.send();
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+
+    <div id="content"></div>
+    
+    <script>
+        function reqListener () {
+            // Pega o conteúdo do arquivo e adiciona no elemento com o ID "content"
+            document.getElementById("content").textContent = this.responseText;
+        };
+        
+        var oReq = new XMLHttpRequest();
+        // Define o comportamento ao finalizar o carregamento do arquivo
+        // Nesse caso será executada a função "reqListener"
+        oReq.onload = reqListener;
+        // Define o método, o arquivo e a forma (assíncrona ou síncrona)
+        oReq.open("get", "seuArquivo.txt", true);
+        // Dispara o comando
+        oReq.send();
+    </script>
+</body>
+</html>

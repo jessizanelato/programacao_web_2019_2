@@ -1,0 +1,28 @@
+{
+    "bookstore": [
+        {
+            "book": {
+                "category": "children",
+                "title": {
+                    "lang": "en",
+                    "value": "Harry Potter"
+                },
+                "author": "J K. Rowling",
+                "year": 2005,
+                "price": 29.99
+            }
+        },
+        {
+            "book": {
+                "category": "web",
+                "title": {
+                    "lang": "en",
+                    "value": "Learning XML"
+                },
+                "author": "Erik T. Ray",
+                "year": 2003,
+                "price": 39.95
+            }
+        }
+    ]
+}
