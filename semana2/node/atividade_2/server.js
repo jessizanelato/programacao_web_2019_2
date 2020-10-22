@@ -8,8 +8,10 @@ const port = process.env.PORT || 5000
 app.set('view engine', 'ejs')     // Setamos que nossa engine será o ejs
 app.use(expressLayouts)           // Definimos que vamos utilizar o express-ejs-layouts na nossa aplicação
 app.use(bodyParser.urlencoded())  // Com essa configuração, vamos conseguir parsear o corpo das requisições
+app.use(bodyParser.json())        // Com essa configuração, vamos conseguir parsear o corpo das requisições
 
 app.use(express.static(__dirname + '/public'))
+
 app.listen(port, () => {
     console.log(`A mágica acontece em http://localhost:${port}`)
 })
@@ -43,5 +45,9 @@ app.get('/contact', (req, res) => {
 })
 
 app.post('/contact', (req, res) => {
+    // TODO: validação dos dados
+    // TODO: inserção no banco de dados
+    // TODO: render página
+    // TODO: mostrar a mensagem pro usuário    
     res.send('Obrigado por entrar em contato conosco, ' + req.body.name + '! Responderemos em breve!')
 })
