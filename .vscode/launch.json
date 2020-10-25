@@ -5,11 +5,16 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: Arquivo Atual",
+            "name": "Python: form_web_django",
             "type": "python",
             "request": "launch",
-            "program": "${file}",
-            "console": "integratedTerminal"
+            "program": "${workspaceFolder}\\semana3\\python\\form_web_django\\manage.py",
+            "args": [
+                "runserver",
+                "--settings=form_web_django.settings",
+                "localhost:8002",
+            ],
+            "django": true
         }
     ]
 }
