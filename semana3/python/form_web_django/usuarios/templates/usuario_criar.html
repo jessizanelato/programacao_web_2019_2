@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Manipulando formulários com Django</title>
+    </head>
+    <body>
+        <h1>Manipulando formulários com Django</h1>
+        <form method="post">
+            {% csrf_token %}
+            <fieldset>
+                <legend>Novo Usuário</legend>
+                Nome: *<br />
+                <input type="text" name="nome" /><br />
+                E-mail: *<br />
+                <input type="text" name="email" /><br />
+                Senha: *<br />
+                <input type="password" name="senha" /><br />
+                Confirmar senha: *<br />
+                <input type="password" name="conf_senha" /><br />
+                Cidade:<br />
+                <select name="cidade">
+                    <option value="-1" selected>--Selecione</option>
+                    <option value="1">Florianópolis</option>
+                    <option value="2">São José</option>
+                    <option value="3">Palhoça</option>                    
+                    <option value="99">Outro</option>
+                </select><br />
+                Idade:<br />
+                <input type="text" name="idade" /><br />
+                Comentários:<br />
+                <textarea name="comentarios" rows="4" cols="30"></textarea><br />
+                Sexo:<br />
+                <label>
+                    <input type="radio" name="sexo" value="m"> Masculino</input>
+                </label>
+                <label>
+                    <input type="radio" name="sexo" value="m"> Masculino</input>
+                </label>
+                <label>
+                    <input type="radio" name="sexo" value="o"> Outro</input><br />                 
+                </label>
+                <br />
+                <input type="checkbox" name="termos" /> Concordo com os termos de uso *
+                <br />
+                <hr />
+                <input type="submit" value="Enviar" />
+                <input type="reset" value="Limpar" />
+                * Campos obrigatórios
+            </fieldset>
+        </form>
+        {% if erros|length > 0 %}
+        <ul>
+            {% for erro in erros %}
+            <li>{{ erro }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% if campos %}
+        <h2>Dados recebidos:</h2>
+        <ul>
+            <li><b>Nome:</b> {{ campos.nome }}</li>
+            <li><b>E-mail:</b> {{ campos.email }}</li>
+            <li><b>Senha:</b> {{ campos.senha }}</li>
+            <li><b>Confirmar senha:</b> {{ campos.conf_senha }}</li>
+            <li><b>Cidade:</b> {{ campos.cidade }}</li>
+            <li><b>Idade:</b> {{ campos.idade }}</li>
+            <li><b>Comentários:</b> {{ campos.comentarios }}</li>
+            <li><b>Sexo:</b> {{ campos.sexo }}</li>
+            <li><b>Termos:</b> {{ campos.termos }}</li>
+        </ul>
+        {% endif %}
+    </body>
+</html>
