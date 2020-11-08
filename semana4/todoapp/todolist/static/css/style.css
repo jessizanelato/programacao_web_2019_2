@@ -67,7 +67,7 @@ h1 {
 .inputContainer.half.last.right {
     border-left: 1px solid #efefef;
 }
-input[type="date"], input[type="text"], select {
+input[type="date"], input[type="text"], input[type="password"], select {
     height: 100%;
     width: 100%;
     padding: 0 20px;
@@ -89,7 +89,7 @@ input[type="date"], input[type="text"], select {
 input[type="date"] {
     cursor: pointer;
 }
-input[type="date"]:focus, input[type="text"]:focus, select:focus {
+input[type="date"]:focus, input[type="text"]:focus, input[type="password"]:focus, select:focus {
     outline: none;
     background: #ecf0f1;
 }
@@ -167,6 +167,13 @@ button {
 }
 .taskDelete:hover {
     background: #c0392b;
+}
+.doLogin {
+    background: #0bc40b;
+    padding-left: 32px;
+}
+.doLogin:hover {
+    background: #09b709;
 }
 /* task styles */
 .taskList {

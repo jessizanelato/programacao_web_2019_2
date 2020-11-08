@@ -11,11 +11,12 @@
 <body>
 <div django-app="TaskManager">        
     <div class="container">
-            <div class="content">
+        <div class="content">
             <h1>TodoApp</h1>
             <p class="tagline">a Django todo app</p>
             <form action="" method="post">
-            {% csrf_token %} <!-- csrf token for basic security -->
+                {% csrf_token %} <!-- csrf token for basic security -->
+                {% if perms.todolist.add_todolist  %}
                 <div class="inputContainer">
                     <input type="text" id="description" class="taskName" placeholder="What do you need to do?" name="description" required>
                     <label for="description">Description</label>
@@ -36,21 +37,26 @@
                 </div>
                 <div class="row">
                     <button class="taskAdd" name="taskAdd" type="submit"><i class="fa fa-plus icon"></i>Add task</button>
+                    {% if perms.todolist.delete_todolist %}
                     <button class="taskDelete" name="taskDelete" formnovalidate="" type="submit" onclick="$('input#sublist').click();"><i class="fa fa-trash-o icon"></i>Delete Tasks</button>
+                    {% endif %}
                 </div>
-            <ul class="taskList">
-            {% for todo in todos %} <!-- django template lang - for loop -->
-                <li class="taskItem">
-                    <input type="checkbox" class="taskCheckbox" name="checkedbox" id="{{ todo.id }}" value="{{ todo.id }}">
-                    <label for="{{ todo.id }}"><span class="complete-">{{ todo.title }}</span></label>
-                    <span class="category-{{ todo.category }}">{{ todo.category }}</span>
-                    <strong class="taskDate"><i class="fa fa-calendar"></i>{{ todo.created_date }} - {{ todo.due_date }}</strong>
-                </li>
-            {% endfor %}
-            </ul><!-- taskList -->
+                {% endif %}
+                {% if perms.todolist.view_todolist %}
+                <ul class="taskList">
+                {% for todo in todos %} <!-- django template lang - for loop -->
+                    <li class="taskItem">
+                        <input type="checkbox" class="taskCheckbox" name="checkedbox" id="{{ todo.id }}" value="{{ todo.id }}">
+                        <label for="{{ todo.id }}"><span class="complete-">{{ todo.title }}</span></label>
+                        <span class="category-{{ todo.category }}">{{ todo.category }}</span>
+                        <strong class="taskDate"><i class="fa fa-calendar"></i>{{ todo.created_date }} - {{ todo.due_date }}</strong>
+                    </li>
+                {% endfor %}
+                </ul><!-- taskList -->
+                {% endif %}
             </form>
-            </div><!-- content -->
- </div><!-- container -->
+        </div><!-- content -->
+    </div><!-- container -->
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body>
