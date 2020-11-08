@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html >
+<head>
+    <meta charset="UTF-8">
+    <title>Chat</title>      
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet" type="text/css" >    
+</head>
+<body>
+    <div class="container">
+        <div class="row">                     
+            <div class="col-sm-8">
+                <div class="chatbody">
+                    
+                    <div class="panel panel-primary">
+                        <div class="panel-heading top-bar">
+                            <div class="col-md-8 col-xs-8">
+                                <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat</h3>
+                            </div>
+                        </div>
+                        <div class="panel-body msg_container_base" id="container-base">
+                            <!-- mensagem vai aparecer aqui -->                            
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <form id="form-chat">
+                            <div class="input-group">
+                                <input id="txt-input" type="text" class="form-control input-sm chat_input" placeholder="Escreva sua mensagem aqui..." />
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary btn-sm" id="btn-chat"><i class="fa fa-send fa-1x" aria-hidden="true"></i></button>
+                                </span>
+                            </div>
+                        </form>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>    
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="chat.js"></script>
+</body>
+</html>
