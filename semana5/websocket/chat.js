@@ -10,6 +10,7 @@ $(function() {
     $("#form-chat").on('submit', function(e) {
         let msg = $("#txt-input").val();
         ws.send(msg);
+        console.log("Mensagem Enviada:", msg);
         
         let html = '<div class="panel-body msg_container_base">';
             html += '<div class="row msg_container base_sent">';
