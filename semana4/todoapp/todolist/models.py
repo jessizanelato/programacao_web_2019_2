@@ -2,8 +2,7 @@ from django.db import models
 from django.utils import timezone
 
 class Category(models.Model):
-    name = models.CharField(max_length=100)
-    
+    name = models.CharField(max_length=100)    
     class Meta:
         verbose_name = ("Category")
         verbose_name_plural = ("Categories")
