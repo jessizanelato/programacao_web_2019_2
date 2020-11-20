@@ -23,7 +23,7 @@ function Principal(props) {
 	if(typeof props.match.params.categoria !== 'undefined'){
 		categoriaAtiva = props.match.params.categoria;
 	} else {
-		categoriaAtiva = 'general';
+		categoriaAtiva = 'geral';
 	}
 
 	return (

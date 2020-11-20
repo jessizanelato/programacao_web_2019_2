@@ -1,14 +1,21 @@
 from .models import Fonte, Artigo
 from .serializers import ArtigoSerializer, FonteSerializer
 from django.http import Http404
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
 class ArtigoList(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, format=None):
         get_data = request.query_params
-        artigos = Artigo.objects.filter(categoria=get_data['categoria'])
+        artigos = Artigo.objects.all()
+        if 'categoria' in get_data:
+            artigos = artigos.filter(categoria=get_data.get('categoria'))        
         serializer = ArtigoSerializer(artigos, many=True)
         return Response(serializer.data)
 
@@ -19,10 +26,10 @@ class ArtigoList(APIView):
             return Response(serializer.data, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class ArtigoDetail(APIView):
-    """
-    Retrieve, update or delete a snippet instance.
-    """
+class ArtigoDetail(APIView):    
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def get_object(self, pk):
         try:
             return Artigo.objects.get(pk=pk)
@@ -56,6 +63,9 @@ class ArtigoDetail(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 class FonteList(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def get(self, request, format=None):
         fontes = Fonte.objects.all()
         serializer = FonteSerializer(fontes, many=True)
@@ -69,9 +79,9 @@ class FonteList(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class FonteDetail(APIView):
-    """
-    Retrieve, update or delete a snippet instance.
-    """
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
+
     def get_object(self, pk):
         try:
             return Fonte.objects.get(pk=pk)
