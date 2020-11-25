@@ -1,6 +1,9 @@
 const WebSocket = require('ws');
 
-const wss = new WebSocket.Server({host: 'localhost', port: 8000 });
+const port = 5000
+const host = 'localhost'
+
+const wss = new WebSocket.Server({host: host, port: port });
 
 wss.on('connection', ws => {
 	ws.on('message', mensagem => {
@@ -10,4 +13,4 @@ wss.on('connection', ws => {
 	});
 	ws.send('Estou te ouvindo!');
 });
-console.log('Servidor rodando...');
+console.log('Servidor rodando... //'+ host +':' + port);

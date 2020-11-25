@@ -1,4 +1,4 @@
-var ws = new WebSocket("ws://localhost:8000");
+var ws = new WebSocket("ws://localhost:5000");
 ws.onopen = function(e) {
     console.log("Conexão estabelecida", e);
 }
