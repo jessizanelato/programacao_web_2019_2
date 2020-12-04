@@ -37,7 +37,7 @@ def validate_usuario_criar(campos):
         erros.append("E-mail é campo obrigatório.")
     else:
         try:
-            validate_email(email)
+            validate_email(campos['email'])
         except:
             erros.append("E-mail inválido.")    
     if not campos['senha']:
